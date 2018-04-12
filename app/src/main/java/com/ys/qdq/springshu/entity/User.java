@@ -1,10 +1,9 @@
-package com.ys.qdq.springshu;
+package com.ys.qdq.springshu.entity;
 
 import cn.bmob.v3.BmobUser;
 import cn.bmob.v3.datatype.BmobFile;
 
 /**
- * Company Name:成都够用云科技有限公司
  * Author:qdq
  * Discription:用户信息
  * Date: 2016/9/5

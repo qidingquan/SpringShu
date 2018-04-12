@@ -1,24 +1,19 @@
-package com.ys.qdq.springshu;
+package com.ys.qdq.springshu.base;
 
 import android.app.Application;
-
-import org.xutils.x;
-
 import cn.bmob.v3.Bmob;
 
 /**
- * Company Name:成都够用云科技有限公司
  * Author:qdq
  * Discription:初始化bmob
  * Date: 2016/9/5
  */
-public class MyApplication extends Application{
+public class BaseApplication extends Application{
+    public static BaseApplication instance;
     @Override
     public void onCreate() {
         super.onCreate();
-        //初始化xutils
-        x.Ext.init(this);
-        x.Ext.setDebug(true);
+        instance=this;
         //默认初始化
         Bmob.initialize(this,"64ee73e1658cdcc560b9560d8806db02");
         //第二：自v3.4.7版本开始,设置BmobConfig,允许设置请求超时时间、文件分片上传时每片的大小、文件的过期时间(单位为秒)，

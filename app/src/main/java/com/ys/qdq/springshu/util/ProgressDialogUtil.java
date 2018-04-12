@@ -1,4 +1,4 @@
-package com.ys.qdq.springshu;
+package com.ys.qdq.springshu.util;
 
 import android.app.ProgressDialog;
 import android.content.Context;

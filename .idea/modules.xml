@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/SpringShu.iml" filepath="$PROJECT_DIR$/SpringShu.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\study\SpringShu\app\app.iml" filepath="D:\study\SpringShu\app\app.iml" />
     </modules>
   </component>
 </project>

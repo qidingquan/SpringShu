@@ -1,40 +1,45 @@
-package com.ys.qdq.springshu;
+package com.ys.qdq.springshu.login;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.ys.qdq.springshu.R;
+import com.ys.qdq.springshu.base.BaseActivity;
+import com.ys.qdq.springshu.entity.User;
+
+import butterknife.BindView;
+import butterknife.OnClick;
 import cn.bmob.v3.listener.SaveListener;
 
-public class RegisterActivity extends AppCompatActivity {
-    private EditText user_et;
-    private EditText pass_et;
-    private Button register_bt;
+public class RegisterActivity extends BaseActivity {
+
+    @BindView(R.id.user_et)
+     EditText user_et;
+    @BindView(R.id.pass_et)
+     EditText pass_et;
+
+    @OnClick({R.id.register_bt})
+    public void click(View view){
+        switch (view.getId()){
+            case R.id.register_bt:
+                requestServer();
+                break;
+        }
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        initView();
-        initListener();
+    protected int getLayoutResource() {
+        return R.layout.activity_register;
     }
 
-    private void initView(){
-        user_et= (EditText) findViewById(R.id.user_et);
-        pass_et= (EditText) findViewById(R.id.pass_et);
-        register_bt= (Button) findViewById(R.id.register_bt);
+    @Override
+    protected void initData() {
+
     }
-    private void initListener() {
-        register_bt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                requestServer();
-            }
-        });
-    }
+
     private void requestServer() {
         String username=user_et.getText().toString().trim();
         String password=pass_et.getText().toString().trim();
