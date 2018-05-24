@@ -1,0 +1,50 @@
+ext.deps = [:]
+
+def build_versions = [:]
+build_versions.min_sdk = 14
+build_versions.target_sdk = 26
+build_versions.build_tools = "27.0.2"
+ext.build_versions = build_versions
+
+def versions = [:]
+versions.support = "27.0.2"
+versions.glide = "4.6.1"
+versions.butterknife = "8.8.1"
+
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+deps.support = support
+
+def bmob = [:]
+bmob.sdk = "cn.bmob.android:bmob-sdk:3.4.7-aar"
+bmob.push = "cn.bmob.android:bmob-push:0.8"
+bmob.im = "cn.bmob.android:bmob-im:2.0.4"
+bmob.androidasync = "cn.bmob.android:androidasync:2.1.6"
+bmob.sms = "cn.bmob.android:bmob-sms:1.0.1"
+bmob.http_legacy = "cn.bmob.android:http-legacy:1.0"
+deps.bmob = bmob
+
+def butterknife = [:]
+butterknife.sdk = "com.jakewharton:butterknife:$versions.butterknife"
+butterknife.compiler = "com.jakewharton:butterknife-compiler:$versions.butterknife"
+deps.butterknife = butterknife
+
+def glide = [:]
+glide.sdk = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
+
+def imageSelector = [:]
+imageSelector.sdk = "com.github.lovetuzitong:MultiImageSelector:1.2"
+deps.imageSelector = imageSelector
+
+def lifecycle = [:]
+lifecycle.livedata = "android.arch.lifecycle:livedata:1.1.1"
+lifecycle.compiler = "android.arch.lifecycle:compiler:1.1.1"
+deps.lifecycle = lifecycle

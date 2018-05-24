@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.2'
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
 
     defaultConfig {
         applicationId "com.ys.qdq.springshu"
-        minSdkVersion 15
-        targetSdkVersion 27
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
     }
@@ -32,31 +32,31 @@ repositories {
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support:support-v4:27.0.2'
-    implementation 'com.android.support:recyclerview-v7:27.0.2'
 
-    compile 'com.github.lovetuzitong:MultiImageSelector:1.2'
-    //以下SDK开发者请根据需要自行选择
-    //bmob-sdk：Bmob的android sdk包，包含了Bmob的数据存储、文件等服务，以下是最新的bmob-sdk:
-    //3.4.7-aar：具务必查看下面注释[1]
-    compile 'cn.bmob.android:bmob-sdk:3.4.7-aar'
-    //bmob-push：Bmob的推送包
-    compile 'cn.bmob.android:bmob-push:0.8'
-    //bmob-im：Bmob的即时通讯包，注意每个版本的im依赖特定版本的bmob-sdk，具体的依赖关系可查看下面注释[3]
-    compile 'cn.bmob.android:bmob-im:2.0.4'
-    compile 'cn.bmob.android:androidasync:2.1.6'
-    compile 'cn.bmob.android:bmob-sdk:3.4.6'
-    //注：别忘记导入3.4.6的相关依赖包[2]
-    //bmob-sms ：Bmob单独为短信服务提供的包
-    compile 'cn.bmob.android:bmob-sms:1.0.1'
-    //如果你想应用能够兼容Android6.0，请添加此依赖(org.apache.http.legacy.jar)
-    compile 'cn.bmob.android:http-legacy:1.0'
-    //图片显示
-    implementation 'com.github.bumptech.glide:glide:4.6.1'
-    annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+    // Support libraries
+    implementation deps.support.app_compat
+    implementation deps.support.v4
+    implementation deps.support.design
+    implementation deps.support.cardview
+    implementation deps.support.recyclerview
+
+    //bmob相关api
+    implementation deps.bmob.sdk
+    implementation deps.bmob.push
+    implementation deps.bmob.im
+    implementation deps.bmob.androidasync
+    implementation deps.bmob.sms
+    implementation deps.bmob.http_legacy
+
+    //图片相关
+    implementation deps.imageSelector.sdk
+    implementation deps.glide.sdk
+    annotationProcessor deps.glide.compiler
     //findById
-    implementation 'com.jakewharton:butterknife:8.8.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation deps.butterknife.sdk
+    annotationProcessor deps.butterknife.compiler
+    //lifecycle相关
+    implementation deps.lifecycle.livedata
+    annotationProcessor deps.lifecycle.compiler
 
 }
