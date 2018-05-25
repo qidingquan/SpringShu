@@ -24,8 +24,6 @@ import cn.bmob.v3.datatype.BmobFile;
 import cn.bmob.v3.listener.DeleteListener;
 import cn.bmob.v3.listener.SaveListener;
 import cn.bmob.v3.listener.UploadFileListener;
-import me.nereo.multi_image_selector.MultiImageSelector;
-import me.nereo.multi_image_selector.MultiImageSelectorActivity;
 
 /**
  * 主界面
@@ -78,7 +76,7 @@ public class MainActivity extends BaseActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.add_menu://添加记录
-                MultiImageSelector.create(this).showCamera(true).count(1).single().start(this, Constants.REQUEST_IMAGE);
+
                 return true;
             case R.id.delete_menu://删除记录
                 deleteRecord();
@@ -93,9 +91,9 @@ public class MainActivity extends BaseActivity {
         if (requestCode == Constants.REQUEST_IMAGE) {
             if (resultCode == RESULT_OK) {
                 // 获取返回的图片列表
-                List<String> path = data.getStringArrayListExtra(MultiImageSelectorActivity.EXTRA_RESULT);
+
                 // 处理你自己的逻辑 ....
-                uploadFile(path.get(0));
+
             }
         }
     }

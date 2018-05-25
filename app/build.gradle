@@ -10,12 +10,72 @@ android {
         targetSdkVersion build_versions.target_sdk
         versionCode 1
         versionName "1.0"
+        //版本名后面添加一句话，意思就是flavor dimension 它的维度就是该版本号，这样维度就是都是统一的了
+        flavorDimensions "1"
+        multiDexEnabled true
+        manifestPlaceholders = [UMENG_CHANNEL_VALUE: "ALL"]
+    }
+    signingConfigs {
+        debug {
+            storeFile file(project.storeFile)//签名文件路径
+            storePassword project.storePassword
+            keyAlias project.keyAlias
+            keyPassword project.keyPassword  //签名密码
+        }
+        release {
+            storeFile file(project.storeFile)//签名文件路径
+            storePassword project.storePassword
+            keyAlias project.keyAlias
+            keyPassword project.keyPassword  //签名密码
+        }
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+        debug{
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'),'proguard-rules.pro'
+        }
+    }
+    productFlavors {
+
+        productFlavors {
+
+            wandoujia {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "wandoujia"]
+            }
+
+            baidu {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "baidu"]
+            }
+
+            qh360 {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "qh360"]
+            }
+
+            huawei {
+                manifestPlaceholders = [UMENG_CHANNEL_VALUE: "huawei"]
+            }
+        }
+    }
+    //有时候我们打包会显示lint报错
+    lintOptions {
+        abortOnError false
+    }
+    //dx工具（android将jar包转成dex格式二进制jar包工具） 这将应用所有使用dex的task。解决65535的配置
+    dexOptions {
+        incremental true
+        javaMaxHeapSize "4g"
+        //关闭预编译
+        preDexLibraries = false
     }
     sourceSets {
         main.jniLibs.srcDirs = ['libs']
@@ -49,7 +109,6 @@ dependencies {
     implementation deps.bmob.http_legacy
 
     //图片相关
-    implementation deps.imageSelector.sdk
     implementation deps.glide.sdk
     annotationProcessor deps.glide.compiler
     //findById
